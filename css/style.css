@@ -1,0 +1,816 @@
+/* ===============================
+   GLOBAL RESET & BASE STYLES
+================================ */
+* {
+    margin: 1;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===============================
+   HEADER & NAVIGATION
+================================ */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0a3d62;
+    padding: 12px 40px;
+}
+
+/* LOGO */
+.logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* NAV MENU */
+/* ===============================
+   NAVBAR BASE
+================================ */
+/* NAVBAR BASE FIX */
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end; /* PUSH ITEMS TO RIGHT */
+}
+
+
+/* HAMBURGER ICON */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+/* NAV LINKS */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE MENU
+================================ */
+/* ===============================
+   MOBILE HEADER & NAVIGATION
+================================ */
+@media (max-width: 768px) {
+
+    /* HEADER: LOGO LEFT, MENU RIGHT */
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    /* LOGO SIZE */
+    .logo {
+        height: 45px;
+        margin: 0;
+    }
+
+    /* NAVBAR CONTAINER */
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    /* HAMBURGER ICON */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    /* HIDE DESKTOP MENU */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 100%;
+        background-color: #0a3d62;
+        text-align: center;
+        padding: 15px 0;
+        z-index: 1000;
+    }
+
+    .nav-links li {
+        padding: 10px 0;
+    }
+
+    /* SHOW MENU WHEN ACTIVE */
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+
+/* ===============================
+   HERO SECTION (HOME)
+================================ */
+.hero {
+    background-color: #dff9fb;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #0a3d62;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1e6091;
+}
+
+/* ===============================
+   SECTION STYLES
+================================ */
+section {
+    padding: 40px 60px;
+}
+
+section h2 {
+    margin-bottom: 15px;
+    color: #0a3d62;
+}
+
+/* ===============================
+   HOMEPAGE HERO BACKGROUND
+================================ */
+.hero-glass {
+    min-height: 50vh;
+    background-image: url("../images/bg.jpg"); /* CHANGE IMAGE */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* TINT OVER IMAGE */
+.hero-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 61, 98, 0.55); /* BLUE TINT */
+}
+
+/* GLASS CONTENT */
+.hero-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px 50px;
+    border-radius: 15px;
+    text-align: center;
+    color: #ffffff;
+    max-width: 600px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* TEXT STYLES */
+.hero-content h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 25px;
+        margin: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+}
+
+/* ===============================
+   LATEST NEWS SECTION
+================================ */
+.news-section {
+    padding: 50px 60px;
+    background-color: #f5f6fa;
+}
+
+.news-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.news-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+
+.news-content {
+    padding: 20px;
+}
+
+.news-content h3 {
+    color: #0a3d62;
+    margin-bottom: 10px;
+}
+
+.news-content p {
+    font-size: 15px;
+}
+
+/* ===============================
+   ANNOUNCEMENT SECTION
+================================ */
+.announcement-section {
+    padding: 40px 60px;
+    background-color: #0a3d62;
+    color: white;
+    text-align: center;
+}
+
+.announcement-section h2 {
+    margin-bottom: 10px;
+}
+
+.announcement-section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+/* MOBILE SPACING */
+@media (max-width: 768px) {
+    .news-section,
+    .announcement-section {
+        padding: 30px 20px;
+    }
+}
+
+
+/* ===============================
+   PLAYERS PAGE
+================================ */
+.players {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 players per row */
+    gap: 25px;
+    padding-top: 20px;
+}
+
+/* PLAYER CARD */
+.player-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* PLAYER IMAGE */
+.player-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top; /* prevent top cropping */
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* PLAYER NAME */
+.player-card h3 {
+    color: #0a3d62;
+    margin-bottom: 5px;
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS
+================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .players {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    .players {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ===============================
+   FIXTURES SECTION
+================================ */
+.fixtures-section {
+    padding: 50px 60px;
+    background-color: #f5f6fa;
+}
+
+.fixtures-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0a3d62;
+}
+
+/* TABLE-LIKE LAYOUT */
+.fixtures-table {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fixture-row {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 2fr 1fr;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 15px;
+}
+
+.fixture-header {
+    background-color: #0a3d62;
+    color: white;
+    font-weight: bold;
+}
+
+.fixture-row:last-child {
+    border-bottom: none;
+}
+
+/* STATUS BADGES */
+.fixture-upcoming {
+    color: #856404;
+    font-weight: bold;
+}
+
+.fixture-pending {
+    color: #0c5460;
+    font-weight: bold;
+}
+
+/* ===============================
+   RESPONSIVE FIXTURES
+================================ */
+@media (max-width: 768px) {
+    .fixture-row {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+        font-size: 14px;
+    }
+
+    .fixture-header {
+        display: none;
+    }
+}
+
+/* ===============================
+   MATCHES / RESULTS SECTIONS
+================================ */
+.matches-section {
+    padding: 50px 60px;
+    background-color: #f5f6fa;
+}
+
+.matches-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0a3d62;
+}
+
+/* GRID LAYOUT */
+.match-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* MATCH CARD */
+.match-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.match-date {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.match-score {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* STATUS LABELS */
+.match-status {
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.win {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.draw {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.loss {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* UPCOMING GAMES */
+.upcoming {
+    background-color: #ffffff;
+}
+
+.upcoming-game .match-time,
+.upcoming-game .match-venue {
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+    .match-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .match-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .matches-section {
+        padding: 30px 20px;
+    }
+}
+
+
+/* ===============================
+   ABOUT PAGE
+================================ */
+h1 {
+    margin-bottom: 15px;
+    color: #0a3d62;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* ===============================
+   TEAM GROUP PHOTO
+================================ */
+.team-group-photo {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+
+.team-group-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* DARK OVERLAY + TITLE */
+.group-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(185, 190, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-photo-overlay h2 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* ===============================
+   RESPONSIVE GROUP PHOTO
+================================ */
+@media (max-width: 768px) {
+    .team-group-photo {
+        height: 220px;
+    }
+
+    .group-photo-overlay h2 {
+        font-size: 26px;
+        padding: 0 10px;
+    }
+}
+
+/* ===============================
+   STAFF & TEAM SECTION
+================================ */
+.team-section {
+    padding: 50px 60px;
+    background-color: #ffffff;
+}
+
+.team-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #0a3d62;
+}
+
+.team-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 35px auto;
+    font-size: 16px;
+}
+
+/* TEAM GRID */
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* TEAM CARD */
+.team-card {
+    background-color: #f5f6fa;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* STAFF IMAGE */
+.team-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    color: #0a3d62;
+    margin-bottom: 5px;
+}
+
+.team-card .role {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* ===============================
+   RESPONSIVE STAFF GRID
+================================ */
+@media (max-width: 1024px) {
+    .team-members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-members {
+        grid-template-columns: 1fr;
+    }
+
+    .team-section {
+        padding: 30px 20px;
+    }
+}
+
+/* ===============================
+   CONTACT PAGE
+================================ */
+
+/* ===============================
+   CONTACT DETAILS SECTION
+================================ */
+.contact-details {
+    padding: 50px 60px;
+    background-color: #f5f6fa;
+}
+
+.contact-details h2 {
+    text-align: center;
+    color: #0a3d62;
+    margin-bottom: 10px;
+}
+
+.contact-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 35px auto;
+    font-size: 16px;
+}
+
+/* GRID LAYOUT */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* CONTACT CARD */
+.contact-item {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+    color: #0a3d62;
+    margin-bottom: 10px;
+}
+
+.contact-item p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ===============================
+   RESPONSIVE CONTACT DETAILS
+================================ */
+@media (max-width: 1024px) {
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+        padding: 30px 20px;
+    }
+}
+
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0a3d62;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #1e6091;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+    text-align: center;
+    background-color: #0a3d62;
+    color: white;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN (MOBILE)
+================================ */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        height: 45px;
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    section {
+        padding: 25px 20px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
